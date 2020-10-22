@@ -18,13 +18,13 @@ public class RegistrationConfirmationPage {
     @FindBy(linkText = "Flights")
     private WebElement flightsLink;
 
-    public RegistrationConfirmationPage(WebDriver driver){
+    public RegistrationConfirmationPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 30);
         PageFactory.initElements(driver, this);
     }
 
-    public void goToFlightDetailsPage(){
+    public void goToFlightDetailsPage() {
         this.wait.until(ExpectedConditions.visibilityOf(this.signinLink));
         this.flightsLink.click();
     }

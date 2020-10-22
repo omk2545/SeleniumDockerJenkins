@@ -10,8 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class FlightDetailsPage {
 
-    private WebDriver driver;
-    private WebDriverWait wait;
+    private final WebDriver driver;
+    private final WebDriverWait wait;
 
     @FindBy(name = "passCount")
     private WebElement passengers;
@@ -19,21 +19,19 @@ public class FlightDetailsPage {
     @FindBy(name = "findFlights")
     private WebElement submitBtn;
 
-    public FlightDetailsPage(WebDriver driver){
+    public FlightDetailsPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 30);
         PageFactory.initElements(driver, this);
     }
 
-    public void selectPassengers(String noOfPassengers){
+    public void selectPassengers(String noOfPassengers) {
         this.wait.until(ExpectedConditions.elementToBeClickable(passengers));
         Select select = new Select(passengers);
         select.selectByValue(noOfPassengers);
     }
 
-    public void goToFindFlightsPage(){
+    public void goToFindFlightsPage() {
         this.submitBtn.click();
     }
-
-
 }

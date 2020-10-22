@@ -15,7 +15,7 @@ public class SearchPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    @FindBy(name="q")
+    @FindBy(name = "q")
     private WebElement searchTxt;
 
     @FindBy(id = "search_button_homepage")
@@ -27,35 +27,33 @@ public class SearchPage {
     @FindBy(className = "tile--vid")
     private List<WebElement> allVideos;
 
-    public SearchPage(WebDriver driver){
+    public SearchPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 30);
         PageFactory.initElements(driver, this);
     }
 
-    public void goTo(){
+    public void goTo() {
         this.driver.get("https://duckduckgo.com/");
     }
 
-    public void doSearch(String keyword){
+    public void doSearch(String keyword) {
         this.wait.until(ExpectedConditions.visibilityOf(this.searchTxt));
         this.searchTxt.sendKeys(keyword);
         this.searchBtn.click();
     }
 
-    public void goToVideos(){
+    public void goToVideos() {
         this.wait.until(ExpectedConditions.visibilityOf(this.videosLink));
         this.videosLink.click();
     }
 
-    public int getResult(){
+    public int getResult() {
         By by = By.className("tile--vid");
         this.wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(by, 0));
         System.out.println("Search Result : " + this.allVideos.size());
         return this.allVideos.size();
     }
-
-
 
 
 }
