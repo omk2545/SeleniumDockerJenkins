@@ -1,26 +1,10 @@
 pipeline {
-    agent none
+    agent any
     stages {
-        stage('Build Jar') {
+        stage('Build') {
             steps {
-                sh 'mvn clean package'
-            }
-        }
-        stage('Build Image') {
-            steps {
-                script {
-			sh 'echo  building'
-                	
-                }
-            }
-        }
-        stage('Push Image') {
-            steps {
-                script {
-			
-			sh 'echo  building'
-			
-                }
+               echo 'Building project'
+               sh "mvn clean install"
             }
         }
     }
