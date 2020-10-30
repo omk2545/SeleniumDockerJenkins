@@ -2,7 +2,7 @@
 pipeline{
 agent any
  parameters {
-        choice(name: 'SUITE_NAME', defaultValue: 'search-module.xml', description: 'Enter a password')
+        choice(name: 'SUITE_NAME', choices: ['search-module.xml', 'book-flight-module.xml'], description: 'Pick something')
     }
     stages{
         stage("Set MVN path"){
