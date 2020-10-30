@@ -1,6 +1,9 @@
 
 pipeline{
 agent any
+ parameters {
+        suiteName(name: 'SUITE_NAME', defaultValue: 'search-module.xml', description: 'Enter a password')
+    }
     stages{
         stage("Set MVN path"){
             steps{
@@ -10,8 +13,11 @@ agent any
           }
         stage("Run Maven command"){
            steps{
-                        sh('chmod +x testrun.sh && ./testrun.sh')
-                  }
+                echo "Running suite on Hello ${params.suiteName}"
+                script{
+                        sh('chmod +x testrun.sh && ./testrun.sh ${params.suiteName}')
+                     }
+                }
         }
     }
 }
