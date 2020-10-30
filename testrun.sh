@@ -14,6 +14,7 @@ export PATH
 
 echo $PATH
 
+docker-compose up
 echo  "running test on  $1 "
 echo " ********* Running the  $1 suite************** "
 mvn clean test  -DsuiteXmlFile="$1"
