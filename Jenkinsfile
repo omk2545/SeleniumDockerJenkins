@@ -13,9 +13,9 @@ agent any
           }
         stage("Run Maven command"){
            steps{
-                echo "Running suite on Hello ${params.suiteName}"
+                echo "Running suite on Hello ${params.SUITE_NAME}"
                 script{
-                        sh('chmod +x testrun.sh && ./testrun.sh ${params.suiteName}')
+                        sh('chmod +x testrun.sh && ./testrun.sh ${params.SUITE_NAME}')
                      }
                 }
         }
