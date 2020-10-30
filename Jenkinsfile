@@ -5,11 +5,10 @@ agent any
         choice(name: 'SUITE_NAME', choices: ['search-module.xml', 'book-flight-module.xml'], description: 'Pick something')
     }
     stages{
-        stage("Set MVN path"){
+        stage("Strat Docker Container"){
             steps{
-                echo 'Setting Maven Path '
-                sh "source ~/.bash_profile"
-                }
+                step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.yml', option: [$class: 'ExecuteCommandInsideContainer', command: '', index: 1, privilegedMode: false, service: '', workDir: ''], useCustomDockerComposeFile: true])
+            }
           }
         stage("Run Maven command"){
            steps{
@@ -24,4 +23,5 @@ agent any
             archiveArtifacts artifacts: 'target/surefire-reports/**'
         }
     }
+
 }
