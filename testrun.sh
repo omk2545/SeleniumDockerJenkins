@@ -3,11 +3,18 @@
 # HUB_HOST
 # BROWSER
 # MODULE
-if [ "$1" == null ]; then
-"$1"= 'search-module'
-fi
 
 
-source ~./bash_profile
+#set JAVA_HOME
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+
+M2_HOME=/usr/local/Cellar/maven/3.6.3_1
+export M2_HOME
+
+PATH=$PATH:$JAVA_HOME/bin:$M2_HOME/bin
+export PATH
+
+echo $PATH
+
 echo " ********* Running the  $1 suite************** "
-mvn clean install test -DsuiteXmlFile=$1.xml
