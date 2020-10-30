@@ -17,6 +17,10 @@ agent any
                         sh("chmod +x testrun.sh && ./testrun.sh ${params.SUITE_NAME}")
                      }
                 }
-        }
+        }post {
+                 always {
+                     archiveArtifacts artifacts: 'target/surefire-reports/**'
+                 }
+             }
     }
 }
