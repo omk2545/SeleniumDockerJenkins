@@ -18,6 +18,6 @@ export PATH
 echo $PATH
 
 # shellcheck disable=SC2016
-echo  'running test on ${params.SUITE_NAME}'
+echo  "running test on  $1 "
 echo " ********* Running the  $1 suite************** "
 mvn clean
