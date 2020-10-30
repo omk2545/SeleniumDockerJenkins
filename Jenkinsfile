@@ -7,8 +7,7 @@ agent any
     stages{
         stage("Strat Docker Container"){
             steps{
-                step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.yml', option: [$class: 'ExecuteCommandInsideContainer', command: '', index: 1, privilegedMode: false, service: '', workDir: ''], useCustomDockerComposeFile: true])
-            }
+                step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.yml', option: [$class: 'StartAllServices'], useCustomDockerComposeFile: true])            }
           }
         stage("Run Maven command"){
            steps{
