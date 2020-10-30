@@ -1,11 +1,17 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Set Maven Path') {
             steps {
-               echo 'Building project'
-                     sh "mvn clean package"
+               echo 'Setting Maven Path '
+                     sh "source ~/.bash_profile"
             }
         }
+    stage('Run Maven Command'){
+             steps {
+                   echo 'Setting Maven Path '
+                         sh "mvn clean package"
+                }
+
     }
 }
