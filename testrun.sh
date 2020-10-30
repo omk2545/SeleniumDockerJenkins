@@ -18,3 +18,4 @@ export PATH
 echo $PATH
 
 echo " ********* Running the  $1 suite************** "
+mvn clean
