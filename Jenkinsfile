@@ -18,7 +18,7 @@ pipeline{
             }
         }
 
-        stage("Start Docker Compose") {
+        stage("Bring Down Selenium Jar") {
             steps {
                 sh("/usr/local/bin/docker-compose down")
             }
