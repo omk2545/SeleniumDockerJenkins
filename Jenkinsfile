@@ -23,13 +23,20 @@ pipeline{
                 sh("/usr/local/bin/docker-compose down")
             }
         }
-
     }
     post {
         always {
             archiveArtifacts artifacts: 'target/surefire-reports/**'
-        }
 
+            publishHTML (target : [allowMissing: false,
+                                   alwaysLinkToLastBuild: true,
+                                   keepAll: true,
+                                   reportDir: 'target/surefire-reports',
+                                   reportFiles: 'index.html',
+                                   reportName: 'My Reports',
+                                   reportTitles: 'The Report'])
+
+        }
     }
 }
 
