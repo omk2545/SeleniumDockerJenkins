@@ -1,26 +1,37 @@
-
 pipeline{
-agent any
- parameters {
+    agent any
+    parameters {
         choice(name: 'SUITE_NAME', choices: ['search-module.xml', 'book-flight-module.xml'], description: 'Pick something')
     }
-    stages{
-        stage("Strat Docker Container"){
-            steps{
-                step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.yml', option: [$class: 'StartAllServices'], useCustomDockerComposeFile: true])            }
-          }
-        stage("Run Maven command"){
-           steps{
-                script{
-                        sh("chmod +x testrun.sh && ./testrun.sh ${params.SUITE_NAME}")
-                     }
-                }
-        }
-    }
-    post {
-        always {
-            archiveArtifacts artifacts: 'target/surefire-reports/**'
-        }
-    }
+    stages {
 
+        stage("Start Docker Compose") {
+            steps {
+                sh("/usr/local/bin/docker-compose up -d  --scale firefox=5")
+            }
+        }
+        stage("Run Maven command") {
+            steps {
+                script {
+                    sh("chmod +x testrun.sh && ./testrun.sh ${params.SUITE_NAME}")
+                }
+            }
+        }
+
+        stage("Start Docker Compose") {
+            steps {
+                sh("/usr/local/bin/docker-compose down")
+            }
+        }
+
+    }
 }
+post {
+    always {
+        archiveArtifacts artifacts: 'target/surefire-reports/**'
+    }
+}
+
+
+
+
