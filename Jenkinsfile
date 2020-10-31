@@ -25,10 +25,11 @@ pipeline{
         }
 
     }
-}
-post {
-    always {
-        archiveArtifacts artifacts: 'target/surefire-reports/**'
+    post {
+        always {
+            archiveArtifacts artifacts: 'target/surefire-reports/**'
+        }
+
     }
 }
 
