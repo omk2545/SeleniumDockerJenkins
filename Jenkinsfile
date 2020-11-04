@@ -31,9 +31,9 @@ pipeline{
             publishHTML (target : [allowMissing: false,
                                    alwaysLinkToLastBuild: true,
                                    keepAll: true,
-                                   reportDir: 'target/surefire-reports',
+                                   reportDir: 'reports/current',
                                    reportFiles: 'index.html',
-                                   reportName: 'My Reports',
+                                   reportName: 'Extent report',
                                    reportTitles: 'The Report'])
 
         }

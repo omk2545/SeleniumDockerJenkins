@@ -1,6 +1,9 @@
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="search-module" parallel="tests">
-<!--<suite name="search-module">-->
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="search-module" >
+    <!--<suite name="search-module">-->
+<!--    <listeners>-->
+<!--        <listener class-name="com.utils.ExtentListeners" />-->
+<!--    </listeners>-->
     <test name="search-test-java">
         <parameter name="keyword" value="java" />
         <classes>

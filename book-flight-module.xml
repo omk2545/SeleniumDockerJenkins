@@ -1,5 +1,5 @@
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="book-flight-module" parallel="tests">
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="book-flight-module">
     <test name="book-flight-1">
         <parameter name="noOfPassengers" value="1" />
         <parameter name="expectedPrice" value="$584 USD" />
@@ -9,7 +9,7 @@
     </test>
     <test name="book-flight-2">
         <parameter name="noOfPassengers" value="2" />
-        <parameter name="expectedPrice" value="$1169 USD" />
+        <parameter name="expectedPrice" value="$169 USD" />
         <classes>
             <class name="com.newtours.tests.BookFlightTest" />
         </classes>

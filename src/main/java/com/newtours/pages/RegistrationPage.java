@@ -1,5 +1,6 @@
 package com.newtours.pages;
 
+import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,6 +12,7 @@ public class RegistrationPage {
 
     private WebDriver driver;
     private WebDriverWait wait;
+    private ExtentTest extentTest;
 
     @FindBy(name = "firstName")
     private WebElement firstNameTxt;
@@ -30,8 +32,9 @@ public class RegistrationPage {
     @FindBy(name = "register")
     private WebElement submitBtn;
 
-    public RegistrationPage(WebDriver driver) {
+    public RegistrationPage(WebDriver driver, ExtentTest extentTest) {
         this.driver = driver;
+        this.extentTest=extentTest;
         this.wait = new WebDriverWait(driver, 60);
         PageFactory.initElements(driver, this);
     }
@@ -39,6 +42,7 @@ public class RegistrationPage {
     public void goTo() {
         this.driver.get("https://vins-udemy.s3.amazonaws.com/docker/docker-book-flight.html");
         this.wait.until(ExpectedConditions.visibilityOf(this.firstNameTxt));
+        extentTest.info("going to link success");
     }
 
     public void enterUserDetails(String firstName, String lastName) {
