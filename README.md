@@ -1,2 +1,2 @@
 # SeleniumDockerJenkins
-This is a simple framework learned on udemy 
+This is a simple framework learned 
