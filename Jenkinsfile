@@ -27,6 +27,7 @@ pipeline{
     post {
         always {
             archiveArtifacts artifacts: 'target/surefire-reports/**'
+            archiveArtifacts extent : 'reports/current/**'
 
             publishHTML (target : [allowMissing: false,
                                    alwaysLinkToLastBuild: true,
