@@ -27,7 +27,7 @@ pipeline{
     post {
         always {
             archiveArtifacts artifacts: 'reports/current/**'
-//            archiveArtifacts artifacts: 'target/surefire-reports/**'
+            archiveArtifacts artifacts: 'target/surefire-reports/**'
 //            archiveArtifacts extent : 'reports/current/**'
 
             publishHTML (target : [allowMissing: false,
