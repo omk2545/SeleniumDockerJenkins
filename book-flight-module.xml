@@ -9,7 +9,7 @@
     </test>
     <test name="book-flight-2">
         <parameter name="noOfPassengers" value="2" />
-        <parameter name="expectedPrice" value="$169 USD" />
+        <parameter name="expectedPrice" value="$1169 USD" />
         <classes>
             <class name="com.newtours.tests.BookFlightTest" />
         </classes>
